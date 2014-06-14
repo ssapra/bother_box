@@ -4,6 +4,7 @@ class CreatePosts < ActiveRecord::Migration
       t.string :name
       t.string :title
       t.text :description
+      t.datetime :timestamp
       t.integer :likes, default: 0
 
       t.timestamps

@@ -13,10 +13,14 @@
 
 ActiveRecord::Schema.define(version: 20140613191022) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "posts", force: true do |t|
     t.string   "name"
     t.string   "title"
     t.text     "description"
+    t.datetime "timestamp"
     t.integer  "likes",       default: 0
     t.datetime "created_at"
     t.datetime "updated_at"

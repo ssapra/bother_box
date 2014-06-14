@@ -1,15 +1,20 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :like]
 
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    @posts = Post.order(timestamp: :desc)
+    @post = Post.new
   end
 
   # GET /posts/1
   # GET /posts/1.json
   def show
+  end
+
+  def like
+   @post.update_attributes(likes: @post.likes + 1)
   end
 
   # GET /posts/new
@@ -42,6 +47,7 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
+        @post.update_attributes(timestamp: Time.now)
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
         format.json { head :no_content }
       else

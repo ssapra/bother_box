@@ -1,5 +1,10 @@
 <h1>Bothered at UChicago</h1>
 
+<div class="new_form">
+  <h2 id="toggle_form">Make a new post</h2>
+  <%= render 'form' %>
+</div>
+
 <table class="all-posts">
   <thead>
     <tr>
@@ -13,16 +18,19 @@
 
   <tbody>
     <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.name %></td>
+      <tr data-post-id=<%=post.id%>>
+        <td>
+          <%= post.name %><br/>
+          <p class="post_updated_at">(<%=format_timestamp(post) %>)</p>
+        </td>
         <td><%= post.title %></td>
         <td><%= post.description %></td>
-        <td><%= post.likes %></td>
+        <td class="num_likes"><%= post.likes %></td>
         <td><%= link_to 'Edit', edit_post_path(post), class: "edit button" %> |
-            <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "delete button"  %></td>
+          <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "delete button"  %> |
+          <%= link_to 'Like', like_path(post), method: :post, remote: true, class: "button" %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to 'New Post', new_post_path, class: 'new button' %>

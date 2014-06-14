@@ -1,11 +1,20 @@
+h2{
+  font-size: 1.2em;
+  &:hover{
+    cursor: pointer;
+  }
+}
+
 .all-posts{
   background: none repeat scroll 0 0 white;
   border-radius: 10px;
   color: gray;
-  font-size: 1.4em;
+  font-size: 1.2em;
   line-height: 1.3em;
+
   th{
     padding: 0.5em;
+		background: rgba(0,0,0,0.03);
   }
   td{
     padding: 0.7em 1em 0.7em 1.15em;
@@ -21,11 +30,14 @@
 		-moz-transition: background 0.3s, box-shadow 0.3s;
 		transition: background 0.3s, box-shadow 0.3s;
     &:hover {
-		background: rgba(0,0,0,0.03);
+		  background: rgba(0,0,0,0.03);
 	  }
   }
   margin: 1em auto;
   width: 100%;
+  .post_updated_at{
+    font-size: 0.7em;
+  }
 }
 .button{
   padding: 0.5em;
@@ -35,12 +47,4 @@
   }
   text-decoration: none;
 }
-.edit{
-  // background-color: orange;
-}
-.delete{
-  // background-color: red;
-}
-.new{
-  // background-color: green;
-}
+
