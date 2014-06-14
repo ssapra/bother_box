@@ -22,6 +22,6 @@ $(document).ready(function(){
   $('.new_form h2').on("click", function(){
     $('.new_form form').toggle()
   });
-
+  $('.sortable-table').tablesorter();
 });
 
